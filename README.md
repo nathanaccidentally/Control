@@ -1,4 +1,4 @@
-# Control
+# Control 💡
 A simple interface for interacting with Smart Home devices.
 
 Right now I have configured a 'Platter' similar to the HomeKit app that turns my lights on and off. This directly uses the Hue API, so if you would like to test it you will need to register your Hue bridge with the developer site.
