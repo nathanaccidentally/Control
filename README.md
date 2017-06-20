@@ -8,3 +8,5 @@ Of course, you can really make 'Platters' control whatever you want. It's pretty
 After every request, an alert view is shown so the user knows the action was sent. It's an easy way to confirm everything was sent properly.
 
 Anyways, have fun. 🐈
+
+![Screenshot](https://i.imgur.com/HfdF19e.png)
