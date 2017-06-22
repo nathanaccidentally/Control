@@ -13,8 +13,8 @@
 		898011781EF846C3008C788A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 898011771EF846C3008C788A /* Assets.xcassets */; };
 		8980117B1EF846C3008C788A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898011791EF846C3008C788A /* LaunchScreen.storyboard */; };
 		8980117E1EF846C3008C788A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980117D1EF846C3008C788A /* main.m */; };
-		898011861EF846DF008C788A /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 898011841EF846DF008C788A /* light.png */; };
-		898011871EF846DF008C788A /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 898011851EF846DF008C788A /* background.jpg */; };
+		899CE3991EFC5B9500C048FF /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 899CE3971EFC5B9500C048FF /* light.png */; };
+		899CE39A1EFC5B9500C048FF /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 899CE3981EFC5B9500C048FF /* background.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		8980117A1EF846C3008C788A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8980117C1EF846C3008C788A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8980117D1EF846C3008C788A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		898011841EF846DF008C788A /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = light.png; path = ../Remote/light.png; sourceTree = "<group>"; };
-		898011851EF846DF008C788A /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = ../Remote/background.jpg; sourceTree = "<group>"; };
+		899CE3971EFC5B9500C048FF /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = light.png; path = ../light.png; sourceTree = "<group>"; };
+		899CE3981EFC5B9500C048FF /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = ../background.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +48,8 @@
 			children = (
 				8980116D1EF846C3008C788A /* Control */,
 				8980116C1EF846C3008C788A /* Products */,
-				898011851EF846DF008C788A /* background.jpg */,
-				898011841EF846DF008C788A /* light.png */,
+				899CE3981EFC5B9500C048FF /* background.jpg */,
+				899CE3971EFC5B9500C048FF /* light.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,11 +134,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				898011861EF846DF008C788A /* light.png in Resources */,
+				899CE3991EFC5B9500C048FF /* light.png in Resources */,
+				899CE39A1EFC5B9500C048FF /* background.jpg in Resources */,
 				8980117B1EF846C3008C788A /* LaunchScreen.storyboard in Resources */,
 				898011781EF846C3008C788A /* Assets.xcassets in Resources */,
 				898011761EF846C3008C788A /* Main.storyboard in Resources */,
-				898011871EF846DF008C788A /* background.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M98SKR8LLR;
 				INFOPLIST_FILE = Control/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanaccidentally.Control;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -296,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M98SKR8LLR;
 				INFOPLIST_FILE = Control/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanaccidentally.Control;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,6 +324,7 @@
 				898011831EF846C3008C788A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

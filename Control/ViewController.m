@@ -18,8 +18,7 @@
 
 @implementation ViewController
 
-// I'm going to set some bools so we don't call the wrong thing in our methods.
-static BOOL isPlatterOneStateOn = YES; // Assume state.
+@synthesize switchBoxLabel; // So we can change the text from a seperate method.
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,12 +50,43 @@ static BOOL isPlatterOneStateOn = YES; // Assume state.
     titleHeader.font = [UIFont fontWithName:@"Helvetica-bold" size:40];
     [self.view addSubview:titleHeader]; // Attaches label to view.
     
+    // Now I will make an On/Off button that controls what is sent to the lights.
+    
+    UIBlurEffect *UISwitchBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    UIVisualEffectView *UISwitchBlurView = [[UIVisualEffectView alloc] initWithEffect:UISwitchBlur];
+    UISwitchBlurView.frame = CGRectMake(25, screen.size.height - 90, 100, 50);
+    [UISwitchBlurView.layer setCornerRadius:13];
+    [UISwitchBlurView setClipsToBounds:YES];
+    [self.view addSubview:UISwitchBlurView];
+    
+    // Now for the switch label.
+    
+    UILabel *switchLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, screen.size.height - 80, screen.size.width, 120)];
+    switchLabel.text = @"Tap the switch to toggle on/off.";
+    switchLabel.textColor = [UIColor whiteColor];
+    switchLabel.font = [UIFont fontWithName:@"Helvetica-bold" size:14];
+    [self.view addSubview:switchLabel];
+    
+    // Now for the INSIDE switch label.
+    
+    self.switchBoxLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, -35, screen.size.width, 120)];
+    switchBoxLabel.text = @"Off";
+    switchBoxLabel.textColor = [UIColor blackColor];
+    switchBoxLabel.font = [UIFont fontWithName:@"Helvetica-bold" size:30];
+    [UISwitchBlurView.contentView addSubview:switchBoxLabel];
+    
+    // Now we need to add a tap gesture to the switch.
+    
+    UITapGestureRecognizer *toggleSwitchTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleSwitchTapped)];
+    [toggleSwitchTapped setNumberOfTapsRequired:1];
+    [UISwitchBlurView.contentView addGestureRecognizer:toggleSwitchTapped];
+    
     // Now we're gonna make our 'Platter' views. These are what our buttons are made of.
     // These platters are made out of blur views, but are pretty much used as UIViews for stuff.
     
     UIBlurEffect *UIPlatterViewBlurOne = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     UIVisualEffectView *UIPlatterViewBlurOneEffectView = [[UIVisualEffectView alloc] initWithEffect:UIPlatterViewBlurOne]; // Adds to our Platter view one.
-    UIPlatterViewBlurOneEffectView.frame = CGRectMake(25, 120, 115, 115); // This makes the frame for our platter view. 🐙
+    UIPlatterViewBlurOneEffectView.frame = CGRectMake(screen.size.width / 15, 120, 115, 115); // This makes the frame for our platter view. 🐙
     [UIPlatterViewBlurOneEffectView.layer setCornerRadius:13]; // Sets corner radius to the iOS default. (13)
     [UIPlatterViewBlurOneEffectView setClipsToBounds:YES]; // Sets clipsToBounds.
     [self.view addSubview:UIPlatterViewBlurOneEffectView]; // Should attach to the view controller.
@@ -92,6 +122,59 @@ static BOOL isPlatterOneStateOn = YES; // Assume state.
     UITapGestureRecognizer *platterViewOneTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(platterViewOneTapped)]; // Calls our method if platter one is tapped.
     [platterViewOneTapped setNumberOfTapsRequired:1]; // Sets one tap required.
     [UIPlatterViewBlurOneEffectView.contentView addGestureRecognizer:platterViewOneTapped];
+    
+    ////////////////////////////////////////
+    // Platter Number Two! (Nathans Room) //
+    ////////////////////////////////////////
+    
+    UIBlurEffect *UIPlatterViewBlurTwo = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]; // Nathans Room Platter.
+    UIVisualEffectView *UIPlatterViewBlurTwoEffectView = [[UIVisualEffectView alloc] initWithEffect:UIPlatterViewBlurTwo]; // Adds to our Platter view two.
+    UIPlatterViewBlurTwoEffectView.frame = CGRectMake(screen.size.width / 2, 120, 115, 115); // This makes the frame for our platter view. 🐙 (Nathans room :p)
+    [UIPlatterViewBlurTwoEffectView.layer setCornerRadius:13]; // Sets corner radius to the iOS default. (13)
+    [UIPlatterViewBlurTwoEffectView setClipsToBounds:YES]; // We know what you do. Shut up.
+    [self.view addSubview:UIPlatterViewBlurTwoEffectView]; // Should attach to the view controller.
+    
+    // I'm so ready to create my Platter label!
+    
+    UILabel *platterTwoLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, screen.size.width, 120)];
+    platterTwoLabel.text = @"My Room";
+    platterTwoLabel.textColor = [UIColor blackColor];
+    platterTwoLabel.font = [UIFont fontWithName:@"Helvetica-bold" size:14];
+    [UIPlatterViewBlurTwoEffectView.contentView addSubview:platterTwoLabel]; // Adds our "Object" label to the content view of our blurred "Platter"
+    
+    // I can't wait to make this subLabel!
+    
+    UILabel *platterTwoSubLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, screen.size.width, 120)];
+    platterTwoSubLabel.text = @"Cat Nest";
+    platterTwoSubLabel.textColor = [UIColor grayColor];
+    platterTwoSubLabel.font = [UIFont fontWithName:@"Helvetica-bold" size:14];
+    [UIPlatterViewBlurTwoEffectView.contentView addSubview:platterTwoSubLabel];
+    
+    // Attaching an icon! I'm going to have to do work!
+    
+    UIImageView *lightIconOne = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 18, 32.5)]; // Values came from the original image.
+    lightIconOne.image = lightImage;
+    [UIPlatterViewBlurTwoEffectView.contentView addSubview:lightIconOne]; // Attaches to contentView.
+    
+    // Add my tappes!
+    
+    UITapGestureRecognizer *platterViewTwoTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(platterViewTwoTapped)]; // Calls our method if platter one is tapped.
+    [platterViewTwoTapped setNumberOfTapsRequired:1]; // Sets one tap required.
+    [UIPlatterViewBlurTwoEffectView.contentView addGestureRecognizer:platterViewTwoTapped];
+    
+    // Lets log it!
+    
+    NSLog(@"Platter Two created! 🐙");
+}
+
+// Here is the method for the toggle switch.
+
+- (void)toggleSwitchTapped {
+    if (self.switchBoxLabel.text == @"Off") {
+        self.switchBoxLabel.text = @"On";
+    } else {
+        self.switchBoxLabel.text = @"Off";
+    }
 }
 
 // Here is where we set up our custom methods.
@@ -100,8 +183,8 @@ static BOOL isPlatterOneStateOn = YES; // Assume state.
 - (void)platterViewOneTapped {
     NSLog(@"PlatterViewOneTapped 🐙");
     
-    if (isPlatterOneStateOn) {
-        NSLog(@"Platter one is on! Turning it off.");
+    if (self.switchBoxLabel.text == @"Off") {
+        NSLog(@"Switch is set to off. Turning off the lights.");
         
         // This handles if the light state is set to 'ON'.
         // If it is, we want to turn them off, like a switch.
@@ -118,9 +201,8 @@ static BOOL isPlatterOneStateOn = YES; // Assume state.
         
         [self showAlert]; // For confirming action.
         
-        isPlatterOneStateOn = NO;
-    } else {
-        NSLog(@"Platter one is off. Turning it on.");
+    } else if (self.switchBoxLabel.text == @"On") {
+        NSLog(@"Switch is set to on. Turing on the lights.");
         
         NSData *putBody = [@"{\"on\":true}" dataUsingEncoding:NSUTF8StringEncoding]; // The data we're sending. Same as the last if statment.
         NSURL *platterAPIURL = [NSURL URLWithString:@"http://10.0.1.2/api/QcnzYHTkADNZEf6aMaOr0RoIV4lAHQWLkmcV4pei/lights/3/state"]; // The connection to our Hub.
@@ -133,15 +215,46 @@ static BOOL isPlatterOneStateOn = YES; // Assume state.
         [[NSURLConnection alloc] initWithRequest:request delegate:self];
         
         [self showAlert];
+    }
+}
+
+// Now I am going to make my "Nathans Room" methods.
+
+- (void)platterViewTwoTapped {
+    NSLog(@"Switch is set to off. Turning off the lights.");
+    
+    if (self.switchBoxLabel.text == @"Off") {
+        NSLog(@"Platter two is on! Turning it off.");
         
-        isPlatterOneStateOn = YES;
+        NSData *putBody = [@"{\"on\":false}" dataUsingEncoding:NSUTF8StringEncoding]; // The data we're sending.
+        NSURL *platterAPIURL = [NSURL URLWithString:@"http://10.0.1.2/api/QcnzYHTkADNZEf6aMaOr0RoIV4lAHQWLkmcV4pei/groups/2/action"];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:platterAPIURL];
+        request.HTTPMethod = @"PUT";
+        [request setHTTPBody:putBody];
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        [self showAlert];
+        
+    } else if (self.switchBoxLabel.text == @"On") {
+        NSLog(@"Switch is set to on. Turning on the lights.");
+        
+        NSData *putBody = [@"{\"on\":true}" dataUsingEncoding:NSUTF8StringEncoding]; // The data we're sending. Same as the last if statment.
+        NSURL *platterAPIURL = [NSURL URLWithString:@"http://10.0.1.2/api/QcnzYHTkADNZEf6aMaOr0RoIV4lAHQWLkmcV4pei/groups/2/action"]; // The connection to our Hub.
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:platterAPIURL];
+        request.HTTPMethod = @"PUT";
+        [request setHTTPBody:putBody];
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        [self showAlert];
     }
 }
 
 - (void)showAlert {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Action Sent" message:@"Your action was sent to the device. 💡🐈" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Action Sent" message:@"Your action was sent to the device." preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Yay!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Ok." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -155,5 +268,3 @@ static BOOL isPlatterOneStateOn = YES; // Assume state.
 
 
 @end
-
-/* That's pretty much it for creating a platter! */
